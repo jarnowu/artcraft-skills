@@ -4,14 +4,14 @@ Skills that let Claude Code operate the open-source ArtCraft apps from storytold
 
 Unofficial. Not affiliated with storytold or the ArtCraft projects.
 
-| Skill | App | Modelled on | Verified on |
-|---|---|---|---|
-| [filmcraft](skills/filmcraft/SKILL.md) | [FilmCraft](https://github.com/storytold/filmcraft) video editor | Premiere Pro | 0.12.0, Windows |
-| [effectcraft](skills/effectcraft/SKILL.md) | [EffectCraft](https://github.com/storytold/effectcraft) motion graphics | After Effects | 0.16.0, Windows |
-| [figcraft](skills/figcraft/SKILL.md) | [FigCraft](https://github.com/storytold/figcraft) interface design | Figma | 0.10.0, Windows |
-| [soundcraft](skills/soundcraft/SKILL.md) | [SoundCraft](https://github.com/storytold/soundcraft) audio workstation | Pro Tools | 0.12.1, Windows |
+| Skill | App | Verified on |
+|---|---|---|
+| [filmcraft](skills/filmcraft/SKILL.md) | [FilmCraft](https://github.com/storytold/filmcraft) video editor | 0.12.0, Windows |
+| [effectcraft](skills/effectcraft/SKILL.md) | [EffectCraft](https://github.com/storytold/effectcraft) motion graphics | 0.16.0, Windows |
+| [figcraft](skills/figcraft/SKILL.md) | [FigCraft](https://github.com/storytold/figcraft) interface design | 0.10.0, Windows |
+| [soundcraft](skills/soundcraft/SKILL.md) | [SoundCraft](https://github.com/storytold/soundcraft) audio workstation | 0.12.1, Windows |
 
-Each skill has Claude work as it would in the original app and spells out only where the clone differs, plus how to reach the app headless or live in its open window. Only a skill's short description sits in context; the instructions load when a task involves that app. Linux and macOS paths in the skills come from the upstream docs and are untested.
+Each skill covers how to reach the app headless or live in its open window, a working loop for inspecting, changing and checking a project, and the behaviour that trips Claude up without the skill. Only a skill's short description sits in context; the instructions load when a task involves that app. Linux and macOS paths in the skills come from the upstream docs and are untested.
 
 ## Install
 

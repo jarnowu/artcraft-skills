@@ -12,7 +12,7 @@ Every `skills/<app>/SKILL.md` has the same five sections:
 4. **Traps (verified on <app> <version>)**: every version-specific fact lives here and only here.
 5. **Recipes**: a pointer to `references/recipes.md`, short command sequences that were run on the stated version.
 
-Each skill relies on the original app's model (Premiere Pro, After Effects, Figma, Pro Tools) for everything that works the same way, and documents only the differences.
+Each skill relies on the editing model of the app it was designed after for everything that works the same way, and documents only the differences.
 
 ## When an app releases a new version
 
