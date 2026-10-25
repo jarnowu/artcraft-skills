@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: lyric-title-captions
+expected_outcome: |
+  A saved lyric.fcproj with a centred NIGHT DRIVE title that fades out over 0-2 s and the 3 SRT captions, plus a 10 s FilmCraft preview with title and captions visible.
+context:
+  scaffold_script: place-files.sh

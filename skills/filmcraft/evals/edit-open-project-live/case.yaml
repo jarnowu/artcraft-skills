@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: edit-open-project-live
+expected_outcome: |
+  Accurate setup for driving the open app: restart FilmCraft with a control port
+  (filmcraft --control PORT), connect through the bridge (filmcraft-cli --bridge 127.0.0.1:PORT,
+  or a bridge-mode MCP server), and a correct note that edits land in the open project.
+  No changes are made to the machine.

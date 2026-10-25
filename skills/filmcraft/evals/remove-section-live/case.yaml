@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: remove-section-live
+expected_outcome: |
+  Needs FilmCraft running with --control 9877 and two-shots.fcproj open. A frame-exact 0:05-0:07 extract in the live app (48 frames at 24 fps), shown with a clean frame at the cut, and nothing saved.
+context:
+  scaffold_script: place-files.sh
