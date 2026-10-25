@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: title-script
+expected_outcome: |
+  A new title.ecproj (not the demo project) with the animated title, a matching title.mp4, and a frame at 0.5 s that was looked at.

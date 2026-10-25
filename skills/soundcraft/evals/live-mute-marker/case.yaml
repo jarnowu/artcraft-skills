@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: live-mute-marker
+expected_outcome: |
+  Needs SoundCraft running with --control 7802 and band.scraft (the demo session, made with `soundcraft-cli run --demo --save band.scraft`) open. Hats muted, a Bridge marker at bar 17, a screenshot, nothing saved.

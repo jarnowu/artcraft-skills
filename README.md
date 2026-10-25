@@ -1,14 +1,17 @@
 # ArtCraft skills for Claude Code
 
-Skills that let Claude Code operate the ArtCraft apps from storytold through their command-line tools and MCP servers.
+Skills that let Claude Code operate the open-source ArtCraft apps from storytold through their command-line tools and MCP servers.
 
 Unofficial. Not affiliated with storytold or the ArtCraft projects.
 
-| Skill | App | Verified on |
-|---|---|---|
-| [filmcraft](skills/filmcraft/SKILL.md) | [FilmCraft](https://github.com/storytold/filmcraft), the Premiere Pro-style video editor | FilmCraft 0.12.0, Windows |
+| Skill | App | Modelled on | Verified on |
+|---|---|---|---|
+| [filmcraft](skills/filmcraft/SKILL.md) | [FilmCraft](https://github.com/storytold/filmcraft) video editor | Premiere Pro | 0.12.0, Windows |
+| [effectcraft](skills/effectcraft/SKILL.md) | [EffectCraft](https://github.com/storytold/effectcraft) motion graphics | After Effects | 0.16.0, Windows |
+| [figcraft](skills/figcraft/SKILL.md) | [FigCraft](https://github.com/storytold/figcraft) interface design | Figma | 0.10.0, Windows |
+| [soundcraft](skills/soundcraft/SKILL.md) | [SoundCraft](https://github.com/storytold/soundcraft) audio workstation | Pro Tools | 0.12.1, Windows |
 
-Each skill is self-contained. Only its short description sits in context; the instructions load when a task involves that app.
+Each skill has Claude work as it would in the original app and spells out only where the clone differs, plus how to reach the app headless or live in its open window. Only a skill's short description sits in context; the instructions load when a task involves that app. Linux and macOS paths in the skills come from the upstream docs and are untested.
 
 ## Install
 
@@ -24,25 +27,28 @@ cp -r ~/artcraft-skills/skills/filmcraft ~/.claude/skills/
 
 To update, `git pull` in `~/artcraft-skills` and copy again. To use a skill in one project only, copy it into that project's `.claude/skills/` instead.
 
-## FilmCraft
+## Requirements
 
-Covers connecting headless or live to the running app, a verified working loop (inspect, find the command, act on explicit ids, verify, save deliberately), frame-exact cuts, titles and fades, captions with burn-in, loudness targets, Lumetri color, export settings by destination, and clean stills for checking.
+The app, with its command-line tool (bundled with the Windows installers in `C:\Program Files\<App>\<app>-cli.exe`). Python 3 for the skills' `scripts/mcp_call.py`, which calls an app's MCP server from the shell when its tools are not set up in Claude Code.
 
-Requires FilmCraft with `filmcraft-cli` (bundled with the Windows installer at `C:\Program Files\FilmCraft\filmcraft-cli.exe`). Linux and macOS paths in the skill come from the upstream docs and are untested.
+## Optional: the apps' MCP servers
 
-The skill works with the CLI alone. To also give Claude FilmCraft's MCP tools (Windows paths shown):
+The skills work with the CLIs alone. To give Claude an app's MCP tools as well (Windows paths shown):
 
-```bash
-claude mcp add filmcraft --scope user -- "C:\Program Files\FilmCraft\filmcraft-cli.exe" mcp
-```
+| App | Headless | Live in the open app (start the app with `--control PORT` first) |
+|---|---|---|
+| FilmCraft | `claude mcp add filmcraft --scope user -- "C:\Program Files\FilmCraft\filmcraft-cli.exe" mcp` | `... filmcraft-cli.exe --bridge 127.0.0.1:PORT mcp` |
+| EffectCraft | `claude mcp add effectcraft --scope user -- "C:\Program Files\EffectCraft\effectcraft-cli.exe" mcp` | `... effectcraft-cli.exe mcp --bridge PORT` |
+| FigCraft | `claude mcp add figcraft --scope user -- "C:\Program Files\FigCraft\figcraft-cli.exe" mcp` | `... figcraft-cli.exe mcp --attach PORT` |
+| SoundCraft | `claude mcp add soundcraft --scope user -- "C:\Program Files\SoundCraft\soundcraft-cli.exe" mcp` | `... soundcraft-cli.exe mcp --connect PORT` |
 
-For live editing in the open app, start FilmCraft with `filmcraft.exe --control 9876`, then:
+## Tests
 
-```bash
-claude mcp add filmcraft-live --scope user -- "C:\Program Files\FilmCraft\filmcraft-cli.exe" --bridge 127.0.0.1:9876 mcp
-```
+Each skill has test cases in `skills/<app>/evals/`, in the format `claude plugin eval` reads. They use the apps' built-in demo content or small bundled project files, so no media is needed. Cases tagged `needs-live-app` need the app running with the control port their `case.yaml` names.
 
-Tests are in `skills/filmcraft/evals/`, in the format `claude plugin eval` reads. They use FilmCraft's built-in demo footage, so no media is needed. The `remove-section-live` case needs FilmCraft running with `--control 9877` and its `two-shots.fcproj` open.
+## Maintaining
+
+See [MAINTAINING.md](MAINTAINING.md): how the skills are laid out, what to re-check when an app releases a new version, and how the shared helper script is kept in sync.
 
 ## License
 

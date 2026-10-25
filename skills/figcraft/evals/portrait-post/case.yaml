@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: portrait-post
+expected_outcome: |
+  A saved post.figcraft with the centred design and a 2160x2700 post.png.

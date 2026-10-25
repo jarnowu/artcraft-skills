@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: live-headline
+expected_outcome: |
+  Needs FigCraft running with --control 7981 and post.figcraft open. The live headline is 124.8 px and centred, a screenshot is shown, and nothing is saved.
+context:
+  scaffold_script: place-files.sh
